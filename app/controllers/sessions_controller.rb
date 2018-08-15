@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
      oauth_email = request.env["omniauth.auth"]["info"]["email"]
      oauth_name = request.env["omniauth.auth"]["info"]["name"]
      binding.pry
-     if user = User.find_by(:email => oauth_email)
+     if user = User.find_by(:name => oauth_name)
        session[:user_id] = user.id
      else
        user = User.create(:email => oauth_email, :name => oauth_name)
